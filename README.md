@@ -1,18 +1,16 @@
-## Getting Started
+## Laboratorio de Algorítmica y Programación II
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Trabajo de final de la materia AyP2. Facultad de Ingeniería de la Universidad Nacional de la Patagonia, sede Puerto Madryn.
 
-## Folder Structure
+## Proyecto
 
-The workspace contains two folders by default, where:
+Desarrollar un sistema utilizando las estructuras de datos y TADs que correspondan y una adecuada interfaz con el usuario. La complejidad del proyecto y las entregas incrementales deberán ser adecuadas al problema propuesto y consensuadas con la cátedra.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Estructura de directorios
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+El espacio de trabajo se organiza en los siguientes directorios:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- `src`: código fuente el proyecto
+- `lib`: dependencias
+- `src/models`: clases de los modelos
+- `bin`: archivos compilados
