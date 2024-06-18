@@ -1,5 +1,7 @@
 package interfaces;
 
+import models.Location;
+
 public interface Node {
 
     /**
@@ -7,12 +9,6 @@ public interface Node {
      * @return el identificador del nodo
      */
     public String getId();
-
-    /**
-     * Establece el identificador del nodo.
-     * @param id el identificador del nodo
-     */
-    public void setId(String id);
 
     /**
      * Devuelve la dirección IP del nodo.
@@ -39,15 +35,27 @@ public interface Node {
     public void setMacAddress(String macAddress);
 
     /**
-     * Devuelve el modelo del nodo.
-     * @return el modelo del nodo
+     * Devuelve el estado del nodo.
+     * @return el estado del nodo
      */
-    public String getModel();
+    public boolean getStatus();
 
     /**
-     * Establece el modelo del nodo.
-     * @param model el modelo del nodo
+     * Establece el estado del nodo.
+     * @param status el estado del nodo
      */
-    public void setModel(String model);
+    public void setStatus(boolean status);
+
+    /**
+     * Devuelve la ubicación del nodo.
+     * @return la ubicación del nodo
+     */
+    public Location getLocation();
+
+    /**
+     * Establece la ubicación del nodo.
+     * @param location la ubicación del nodo
+     */
+    public void setLocation(Location location);
 
 }
