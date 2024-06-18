@@ -1,5 +1,7 @@
 package models;
 
+import adt.AbstractNode;
+
 /**
 * La clase Computer representa una computadora en la red.
 *
@@ -7,10 +9,7 @@ package models;
 * @version 1.0
 * @since   2024-06-14
 */
-public class Computer {
-    private String id;
-    private String ipAddress;
-    private String macAddress;
+public class Computer extends AbstractNode {
     private boolean status; // true: activo, false: inactivo
     private String location;
 
@@ -24,62 +23,13 @@ public class Computer {
      * @param location la ubicación de la computadora
      */
     public Computer(String id, String ipAddress, String macAddress, boolean status, String location) {
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.macAddress = macAddress;
+        super(id, ipAddress, macAddress, "Computer");
         this.status = status;
         this.location = location;
     }
 
     
-    /**
-     * Devuelve el identificador de la computadora.
-     * @return el identificador de la computadora
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Establece el identificador de la computadora.
-     * @param id el identificador de la computadora
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * Devuelve la dirección IP de la computadora.
-     * @return la dirección IP de la computadora
-     */
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    /**
-     * Establece la dirección IP de la computadora.
-     * @param ipAddress la dirección IP de la computadora
-     */
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    /**
-     * Devuelve la dirección MAC de la computadora.
-     * @return la dirección MAC de la computadora
-     */    
-    public String getMacAddress() {
-        return macAddress;
-    }
-
-    /**
-     * Establece la dirección MAC de la computadora.
-     * @param macAddress la dirección MAC de la computadora
-     */
-    public void setMacAddress(String macAddress) {
-        this.macAddress = macAddress;
-    }
-
+    
     /**
      * Devuelve el estado de la computadora.
      * @return el estado de la computadora
@@ -118,7 +68,7 @@ public class Computer {
      */
     @Override
     public String toString() {
-        return "Computer{id='" + id + "', ipAddress='" + ipAddress + "', macAddress='" + macAddress + 
+        return "Computer{id='" + getId() + "', ipAddress='" + getIpAddress() + "', macAddress='" + getMacAddress() + 
                "', status=" + (status ? "activo" : "inactivo") + ", location='" + location + "'}";
     }
 }
