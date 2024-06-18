@@ -1,5 +1,7 @@
 package models;
 
+import adt.AbstractNode;
+
 /**
  * La clase Router representa un router en la red.
  * 
@@ -7,15 +9,10 @@ package models;
  * @version 1.0
  * @since   2024-06-14
  */
-public class Router {
-    private String id;
-    private String ipAddress;
-    private String macAddress;
+public class Router extends AbstractNode {
     private String model;
     private String firmware;
-    private boolean status; // true: activo, false: inactivo
     private int throughput; // en Mbps
-    private String location;
 
     /**
      * Crea una nueva instancia de la clase Router.
@@ -29,63 +26,11 @@ public class Router {
      * @param throughput el rendimiento del router en Mbps
      * @param location la ubicación del router
      */
-    public Router(String id, String ipAddress, String macAddress, String model, String firmware, boolean status, int throughput, String location) {
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.macAddress = macAddress;
+    public Router(String id, String ipAddress, String macAddress, String model, String firmware, boolean status, int throughput, Location location) {
+        super(id, ipAddress, macAddress, status, location);
         this.model = model;
         this.firmware = firmware;
-        this.status = status;
         this.throughput = throughput;
-        this.location = location;
-    }
-    
-    /**
-     * Devuelve el identificador del router.
-     * @return el identificador del router
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Establece el identificador del router.
-     * @param id el identificador del router
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * Devuelve la dirección IP del router.
-     * @return la dirección IP del router
-     */
-    public String getIpAddress() {
-        return ipAddress;
-    }
-
-    /**
-     * Establece la dirección IP del router.
-     * @param ipAddress la dirección IP del router
-     */
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
-
-    /**
-     * Devuelve la dirección MAC del router.
-     * @return la dirección MAC del router
-     */
-    public String getMacAddress() {
-        return macAddress;
-    }
-
-    /**
-     * Establece la dirección MAC del router.
-     * @param macAddress la dirección MAC del router
-     */
-    public void setMacAddress(String macAddress) {
-        this.macAddress = macAddress;
     }
 
     /**
@@ -121,22 +66,6 @@ public class Router {
     }
 
     /**
-     * Devuelve el estado del router.
-     * @return el estado del router
-     */
-    public boolean isStatus() {
-        return status;
-    }
-
-    /**
-     * Establece el estado del router.
-     * @param status el estado del router
-     */
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    /**
      * Devuelve el rendimiento del router.
      * @return el rendimiento del router
      */
@@ -152,27 +81,11 @@ public class Router {
         this.throughput = throughput;
     }
 
-    /**
-     * Devuelve la ubicación del router.
-     * @return la ubicación del router
-     */
-    public String getLocation() {
-        return location;
-    }
-
-    /**
-     * Establece la ubicación del router.
-     * @param location la ubicación del router
-     */
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         return result;
     }
 
@@ -191,10 +104,10 @@ public class Router {
         if (getClass() != obj.getClass())
             return false;
         Router other = (Router) obj;
-        if (id == null) {
-            if (other.id != null)
+        if (getId() == null) {
+            if (other.getId() != null)
                 return false;
-        } else if (!id.equals(other.id))
+        } else if (!getId().equals(other.getId()))
             return false;
         return true;
     }
@@ -205,9 +118,9 @@ public class Router {
      */
     @Override
     public String toString() {
-        return "Router{id='" + id + "', ipAddress='" + ipAddress + "', macAddress='" + macAddress + 
-               "', model='" + model + "', firmware='" + firmware + "', status=" + (status ? "activo" : "inactivo") + 
-               ", throughput=" + throughput + " Mbps, location='" + location + "'}";
+        return "Router{id='" + getId() + "', ipAddress='" + getIpAddress() + "', macAddress='" + getMacAddress() + 
+               "', model='" + model + "', firmware='" + firmware + "', status=" + (getStatus() ? "activo" : "inactivo") + 
+               ", throughput=" + getThroughput() + " Mbps, location='" + getLocation() + "'}";
     }
 }
 
