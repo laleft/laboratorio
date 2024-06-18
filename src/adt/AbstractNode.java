@@ -1,28 +1,26 @@
 package adt;
 
 import interfaces.Node;
+import models.Location;
 
 public abstract class AbstractNode  implements Node {
     private String id;
     private String ipAddress;
     private String macAddress;
-    private String model;
+    private boolean status;
+    private Location location;
 
-    public AbstractNode(String id, String ipAddress, String macAddress, String model) {
+    public AbstractNode(String id, String ipAddress, String macAddress, boolean status, Location location) {
         this.id = id;
         this.ipAddress = ipAddress;
         this.macAddress = macAddress;
-        this.model = model;
+        this.status = status;
+        this.location = location;
     }
 
     @Override
     public String getId() {
         return id;
-    }
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override
@@ -46,13 +44,22 @@ public abstract class AbstractNode  implements Node {
     }
 
     @Override
-    public String getModel() {
-        return model;
+    public boolean getStatus() {
+        return status;
     }
 
     @Override
-    public void setModel(String model) {
-        this.model = model;
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public Location getLocation() {
+        return location;
     }
     
+    @Override
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }
