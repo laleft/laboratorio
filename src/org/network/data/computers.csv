@@ -1,0 +1,11 @@
+id,ip,macaddress,location
+1,192.168.1.1,00:0a:95:9d:68:16,Oficina compras
+2,192.168.1.2,00:0a:95:9d:68:17,Oficina compras
+3,192.168.1.3,00:0a:95:9d:68:18,Deposito
+4,192.168.1.4,00:0a:95:9d:68:19,Recepcion
+5,192.168.1.5,00:0a:95:9d:68:20,Oficina ventas
+6,192.168.1.6,00:0a:95:9d:68:21,Oficina Administracion
+7,192.168.1.7,00:0a:95:9d:68:22,Oficina Administracion
+8,192.168.1.8,00:0a:95:9d:68:23,Gerencia
+9,192.168.1.9,00:0a:95:9d:68:24,Oficina ventas
+10,192.168.1.10,00:0a:95:9d:68:25,Legales
