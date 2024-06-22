@@ -40,5 +40,9 @@ public class Location {
     public void setRoom(String room) {
         this.room = room;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Location [id=" + id + ", building=" + building + ", floor=" + floor + ", room=" + room + "]";
+    }
 }

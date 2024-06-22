@@ -26,7 +26,7 @@ public class Computer extends AbstractDevice {
 
     /**
      * Devuelve una representación en cadena de la computadora.
-     * @return una representación en cadena de la computadora
+     * @return String
      */
     @Override
     public String toString() {

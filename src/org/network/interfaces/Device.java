@@ -6,7 +6,7 @@ public interface Device {
 
     /**
      * Devuelve el identificador del nodo.
-     * @return el identificador del nodo
+     * @return String
      */
     public String getId();
 
