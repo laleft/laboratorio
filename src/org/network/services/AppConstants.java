@@ -11,23 +11,27 @@ public final class AppConstants {
     /**
      * Ruta del directorio raíz.
      */
-    static String ROOT_PATH = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+    public static String ROOT_PATH = Thread.currentThread().getContextClassLoader().getResource("").getPath();
     /**
      * Ruta del directorio de configuración.
      */
-    static String CONFIG_PATH = ROOT_PATH + "org/network/config/";
+    public static String CONFIG_PATH = ROOT_PATH + "org/network/config/";
     /**
      * Ruta del directorio de datos.
      */
-    static String DATA_PATH = ROOT_PATH + "org/network/data/";
+    public static String DATA_PATH = ROOT_PATH + "org/network/data/";
     /**
      * Nombre del archivo de propiedades.
      */
-    static String PROPERTIES_FILE = "datafiles.properties";
+    public static String PROPERTIES_FILE = "datafiles.properties";
     /**
      * Delimitador de coma.
      */
-    static String COMMA_DELIMITER = ",";
+    public static String COMMA_DELIMITER = ",";
+
+    public static String COMPUTERS = "computers";
+    public static String ROUTERS = "routers";
+    public static String CONNECTIONS = "connections";
 
     /**
      * Constructor privado para evitar la instanciación de la clase.
