@@ -26,24 +26,25 @@ public class AppData {
     /**
      * Carga los datos de un archivo CSV.
      * @param key
-     * @return una lista con los datos del archivo CSV
+     * @return Map<String, Map<String, String>>
      * @see AppConstants
      * @see List
-     * @see ArrayList
+     * @see ChainHashMap
      */
-    public Map<Integer, List<String>> loadData(String key) {
-        Map<Integer, List<String>> records = new ChainHashMap<>();
+    public Map<String, Map<String, String>> loadData(String key) {
+        Map<String, Map<String, String>> records = new ChainHashMap<>();
         String filepath = AppConstants.DATA_PATH + filepaths.getProperty(key);
         try (Scanner scanner = new Scanner(new File(filepath))) {
+            /**
+             * Obtiene los encabezados del archivo CSV.
+             */
+            List<String> header = getRecordFromLine(scanner.nextLine());
+            /**
+             * Obtiene los datos línea por línea.
+             */
             while (scanner.hasNextLine()) {
                 List<String> record = getRecordFromLine(scanner.nextLine());
-                /**
-                 * @todo Mejorar la validación de la cabecera del archivo CSV.
-                 */
-                if(record.get(0).equals("id")) {
-                    continue;
-                }
-                records.put(Integer.parseInt(record.get(0)), record);
+                records.put(record.get(0), createMap(header, record));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,9 +53,23 @@ public class AppData {
     }
 
     /**
+     * Crea un mapa con los encabezados y los datos de una línea del archivo CSV.
+     * @param header
+     * @param record
+     * @return Map<String, String>
+     */
+    private Map<String, String> createMap(List<String> header, List<String> record) {
+        Map<String, String> map = new ChainHashMap<>();
+        for(int i = 0; i < header.size(); i++) {
+            map.put(header.get(i), record.get(i));
+        }
+        return map;
+    }
+
+    /**
      * Obtiene los datos de una línea del archivo CSV.
      * @param line
-     * @return una lista con los datos de la línea
+     * @return List<String>
      * @see List
      * @see ArrayList
      */
