@@ -1,0 +1,7 @@
+id,building,floor,room
+1,Administracion,1,compras
+2,Administracion,1,ventas
+3,Administracion,2,gerencia
+4,Deposito,1,almacen
+5,Deposito,2,logistica
+6,Administracion,1,sistemas

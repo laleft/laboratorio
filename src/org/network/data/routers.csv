@@ -1,0 +1,4 @@
+id,ip,macaddress,description,firmware,throughput,location
+R1,192.168.0.1,00:0a:95:9d:68:16,Netgear R6400,1.0.0,100,1
+R2,192.168.0.2,00:0a:95:9d:68:17,Linksys EA7500,1.0.1,200,4
+R3,192.168.0.3,00:0a:95:9d:68:18,TP-Link Archer C7,1.0.2,300,6
