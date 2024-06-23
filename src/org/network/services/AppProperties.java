@@ -11,7 +11,7 @@ import java.util.HashMap;
  * Clase que carga las propiedades de la aplicación.
  * @version 1.0
  * @since 2024-06-14
- * @autor sdebernardez
+ * @author sdebernardez
  */
 public class AppProperties {
 
@@ -19,7 +19,7 @@ public class AppProperties {
     
     /**
      * Crea una nueva instancia de la clase AppProperties.
-     * @param filename
+     * @param filename el nombre del archivo de propiedades
      */
     public AppProperties(String filename) {
         

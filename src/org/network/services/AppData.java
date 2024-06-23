@@ -1,6 +1,7 @@
 package org.network.services;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import net.datastructures.ArrayList;
@@ -12,7 +13,7 @@ import net.datastructures.ChainHashMap;
 * Clase que carga los datos de un archivo CSV.
 * @version 1.0
 * @since 2024-06-14
-* @autor sdebernardez
+* @author sdebernardez
  */
 public class AppData {
     
@@ -25,13 +26,14 @@ public class AppData {
 
     /**
      * Carga los datos de un archivo CSV.
-     * @param key
+     * @param key la clave de la propiedad que contiene la ruta del archivo
      * @return Map<String, Map<String, String>>
+     * @throws FileNotFoundException si el archivo no se encuentra
      * @see AppConstants
      * @see List
      * @see ChainHashMap
      */
-    public Map<String, Map<String, String>> loadData(String key) {
+    public Map<String, Map<String, String>> loadData(String key) throws FileNotFoundException {
         Map<String, Map<String, String>> records = new ChainHashMap<>();
         String filepath = AppConstants.DATA_PATH + filepaths.getProperty(key);
         try (Scanner scanner = new Scanner(new File(filepath))) {
@@ -47,15 +49,15 @@ public class AppData {
                 records.put(record.get(0), createMap(header, record));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new FileNotFoundException("Error al intentar leer el archivo: " + filepath);
         }
         return records;
     }
 
     /**
      * Crea un mapa con los encabezados y los datos de una línea del archivo CSV.
-     * @param header
-     * @param record
+     * @param header encabezados del archivo CSV
+     * @param record datos de una línea del archivo CSV
      * @return Map<String, String>
      */
     private Map<String, String> createMap(List<String> header, List<String> record) {
@@ -68,7 +70,7 @@ public class AppData {
 
     /**
      * Obtiene los datos de una línea del archivo CSV.
-     * @param line
+     * @param line la línea del archivo CSV
      * @return List<String>
      * @see List
      * @see ArrayList

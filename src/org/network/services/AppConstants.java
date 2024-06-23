@@ -28,10 +28,27 @@ public final class AppConstants {
      * Delimitador de coma.
      */
     public static String COMMA_DELIMITER = ",";
-
+    /**
+     * Tipo de dispositivo 'computer'
+     */
     public static String COMPUTERS = "computers";
+    /**
+     * Tipo de dispositivo 'router'
+     */
     public static String ROUTERS = "routers";
+    /**
+     * Tipo 'location'
+     */
+    public static String LOCATIONS = "locations";
+    /**
+     * Tipo 'connection'
+     */
     public static String CONNECTIONS = "connections";
+    /**
+     * Tipos de dispositivos.
+     * @todo Implementar factory pattern para crear dispositivos.
+     */
+    public static String[] DEVICES = {COMPUTERS, ROUTERS};
 
     /**
      * Constructor privado para evitar la instanciación de la clase.
