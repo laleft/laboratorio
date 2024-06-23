@@ -1,34 +1,59 @@
 @startuml network
 
-Node <|-- Computer
+AbstractDevice <|.. Device
+AbstractDevice <|-- Computer
+AbstractDevice <|-- Router
+Device ..> Location : uses
 
 
-interface Node {
-    + String name
-    + String ip
-    + String mac
-    + String os
-    + String version
-    + String cpu
-    + String ram
-    + String disk
-    + String network
-    + String user
-    + String password
-    + String description
+interface Device {
+    + getId() : String
+    + getIpAddress() : String
+    + setIpAddress(ipAddress : String) : void
+    + getMacAddress() : String
+    + setMacAddress(macAddress : String) : void
+    + getStatus() : boolean
+    + setStatus(status : boolean) : void
+    + getLocation() : Location
+    + setLocation(location : Location) : void
 }
+
+abstract class AbstractDevice {
+    - id : String
+    - ipAddress : String
+    - macAddress : String
+    - status : boolean
+    - location : Location
+}
+
+class Location {
+    - id : String
+    - building : String
+    - floor : String
+    - room : String
+}
+
 
 class Computer {
-    + String name
-    + String ip
-    + String mac
-    + String os
-    + String version
-    + String cpu
-    + String ram
-    + String disk
-    + String network
-    + String user
-    + String password
-    + String description
 }
+
+class Router {
+    - model : String
+    - firmware : String
+    - throughput : int
+    - location : Location
+
+}
+
+class Connection {
+    - id : String
+    - source : Device
+    - target : Device
+    - type : String
+    - bandwidth : int
+    - latency : int
+    - errorRate : Double
+
+}
+
+@enduml
