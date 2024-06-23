@@ -2,49 +2,56 @@ package org.network;
 
 import net.datastructures.AdjacencyMapGraph;
 import net.datastructures.ChainHashMap;
+import net.datastructures.Edge;
 import net.datastructures.Entry;
 import net.datastructures.Graph;
 import net.datastructures.Map;
+import net.datastructures.Vertex;
+
+import java.util.List;
 
 import org.network.interfaces.Device;
 import org.network.models.Connection;
-import org.network.services.AppConstants;
-import org.network.services.AppData;
 import org.network.services.AppInitializer;
+import org.network.storage.Connections;
+import org.network.storage.Devices;
 
+/**
+ * Clase principal de la aplicación.
+ * @version 1.0
+ * @since 2024-06-14
+ * @author sdebernardez
+ */
 public class App {
     public static void main(String[] args) throws Exception {
         
+        /**
+         * Inicializa la aplicación.
+         * Carga las ubicaciones y los dispositivos.
+         * Carga las conexiones.
+         */
+        AppInitializer.init();
+        
         Graph<Device, Connection> network = new AdjacencyMapGraph<>(false);
+        
+        Map<String, Connection> connections = Connections.getConnections();
 
-        AppInitializer.storeLocations();
-
-        Map<String, Device> computers = AppInitializer.getDevices(AppConstants.COMPUTERS);
-        Map<String, Device> routers = AppInitializer.getDevices(AppConstants.ROUTERS);        
-
-        Map<String, Map<String, String>> data = new AppData().loadData(AppConstants.CONNECTIONS);
-        ChainHashMap<String, Connection> connections = new ChainHashMap<>();
-        for(Entry<String, Map<String, String>> connection : data.entrySet()) {
-            connections.put(
-                connection.getValue().get("id"), 
-                new Connection(
-                    connection.getValue().get("id"), 
-                    computers.get(connection.getValue().get("source")), 
-                    routers.get(connection.getValue().get("target")),
-                    connection.getValue().get("type"), 
-                    Integer.parseInt(connection.getValue().get("bandwidth")), 
-                    Integer.parseInt(connection.getValue().get("latency")), 
-                    Double.parseDouble(connection.getValue().get("error_rate"))));
-        }
+        Map<Device, Vertex<Device>> vertexMap = new ChainHashMap<>();
 
         for(Entry<String, Connection> connection : connections.entrySet()) {
-            network.insertEdge(
-                network.insertVertex(connection.getValue().getSource()), 
-                network.insertVertex(connection.getValue().getTarget()), 
-                connection.getValue());
+            Vertex<Device> source = network.insertVertex(connection.getValue().getSource());
+            Vertex<Device> target = network.insertVertex(connection.getValue().getTarget());
+            network.insertEdge(source, target, connection.getValue());
+            vertexMap.put(connection.getValue().getSource(), source);
+            vertexMap.put(connection.getValue().getTarget(), target);
         }
+
+        System.out.println("Dispositivos: " + network.numVertices());
+        System.out.println("Conexiones: " + network.numEdges());
         
-        System.out.println(network);
+        System.out.println("Listado:");
+        for(Edge<Connection> edge : network.edges()) {
+            System.out.println(edge.getElement().getSource().getId() + " -> " + edge.getElement().getTarget().getId());
+        }
     }
-    
 }
