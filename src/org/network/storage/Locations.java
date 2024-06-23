@@ -9,7 +9,7 @@ import org.network.models.Location;
  * Clase que almacena las ubicaciones de los nodos.
 * @version 1.0
 * @since 2024-06-14
-* @autor sdebernardez
+* @author sdebernardez
 * @see Location
  */
 public class Locations {
@@ -33,7 +33,7 @@ public class Locations {
 
     /**
      * Devuelve la ubicación con el identificador especificado.
-     * @param id
+     * @param id el identificador de la ubicación
      * @return Location
      */
     public static Location getLocation(String id) {
@@ -42,7 +42,7 @@ public class Locations {
 
     /**
      * Elimina la ubicación con el identificador especificado.
-     * @param id
+     * @param id el identificador de la ubicación
      */
     public static void removeLocation(String id) {
         locations.remove(id);
