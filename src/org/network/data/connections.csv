@@ -8,3 +8,5 @@ id,source,target,type,bandwidth,latency,error_rate
 7,PC7,R1,ethernet,100,15,0.01
 8,PC8,R1,ethernet,100,15,0.01
 9,PC9,R2,wifi,50,20,0.02
+10,R1,R2,ethernet,1000,5,0.01
+11,R2,R3,ethernet,1000,5,0.02
