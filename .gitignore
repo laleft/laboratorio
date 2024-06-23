@@ -20,3 +20,6 @@ bin/
 # Dependency directories
 lib/
 node_modules/
+
+# Javadoc
+doc/
