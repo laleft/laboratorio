@@ -8,13 +8,10 @@ import net.datastructures.Graph;
 import net.datastructures.Map;
 import net.datastructures.Vertex;
 
-import java.util.List;
-
 import org.network.interfaces.Device;
 import org.network.models.Connection;
 import org.network.services.AppInitializer;
 import org.network.storage.Connections;
-import org.network.storage.Devices;
 
 /**
  * Clase principal de la aplicación.
