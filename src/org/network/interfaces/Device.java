@@ -2,6 +2,12 @@ package org.network.interfaces;
 
 import org.network.models.Location;
 
+/**
+ * Interfaz que representa un dispositivo.
+ * @version 1.0
+ * @since 2024-06-14
+ * @author sdebernardez
+ */
 public interface Device {
 
     /**
